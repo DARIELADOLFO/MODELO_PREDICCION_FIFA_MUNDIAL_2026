@@ -249,7 +249,7 @@ elif menu == "📄 Reportes":
             st.button(f"Falta archivo: {nombre}", disabled=True)
 
 # ----------------- ACERCA DEL PROYECTO -----------------
-elif menu == " Acerca del Proyecto":
+elif menu == "ℹ️ Acerca del Proyecto":
     st.title("Sobre este Proyecto")
     
     st.markdown("""
@@ -275,8 +275,6 @@ elif menu == " Acerca del Proyecto":
     * **Modelado y Predicción:** Scikit-Learn, CatBoost
     * **Visualización de Datos:** Plotly, Matplotlib
     * **Despliegue Frontend:** Streamlit
-    * **Asistentes de IA:** Codex IA, Google Antigravity, ChatGPT y Gemini. Para Documentacion correcta del proyecto y ayuda con la aplicacion web 
-
     
     ---
     
