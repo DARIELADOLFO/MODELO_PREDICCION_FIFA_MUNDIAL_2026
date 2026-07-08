@@ -1,0 +1,49 @@
+# Entornos virtuales
+venv/
+.env
+.venv/
+env/
+.conda/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Datos pesados y sensibles
+data/raw/*
+data/processed/*
+data/external/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Modelos guardados
+models/trained/*
+models/checkpoints/*
+!models/trained/.gitkeep
+!models/checkpoints/.gitkeep
+
+# Salidas generadas
+outputs/figures/*
+outputs/reports/*
+outputs/predictions/*
+outputs/simulations/*
+!outputs/figures/.gitkeep
+!outputs/reports/.gitkeep
+!outputs/predictions/.gitkeep
+!outputs/simulations/.gitkeep
+
+# Streamlit config (opcional)
+.streamlit/
+
+# IDEs y sistemas operativos
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
