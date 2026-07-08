@@ -2,6 +2,11 @@
 
 Este proyecto utiliza Machine Learning y Simulación Monte Carlo para predecir probabilidades de victoria entre selecciones nacionales y simular el desarrollo del Mundial 2026. El objetivo principal es estimar qué equipos tienen mayor probabilidad de avanzar a cada ronda y convertirse en campeones.
 
+
+## Link del App Web :
+
+https://modeloprediccionfifamundial2026-dbdet3zqg5q49hekg9rajb.streamlit.app/
+
 ## Estructura del Proyecto
 
 La estructura del proyecto está diseñada siguiendo las mejores prácticas de Data Science y Software Engineering:
