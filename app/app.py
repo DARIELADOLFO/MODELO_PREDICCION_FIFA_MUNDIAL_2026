@@ -4,9 +4,9 @@ import time
 import os
 import random
 
-# ==========================================
+# 
 # 1. CONFIGURACIÓN DE LA PÁGINA
-# ==========================================
+# 
 st.set_page_config(
     page_title="FIFA World Cup 2026 Predictor",
     page_icon="🏆",
@@ -14,9 +14,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ==========================================
+# 
 # 2. ESTILOS CSS CORPORATIVOS
-# ==========================================
+# 
 st.markdown("""
     <style>
     .stApp { background-color: #F8FAFC; }
@@ -62,9 +62,9 @@ try:
 except ImportError:
     USAR_MOCK = True
 
-# ==========================================
+# 
 # 4. NAVEGACIÓN (SIDEBAR)
-# ==========================================
+# 
 # Cargar el Logo en la parte superior del Sidebar
 ruta_logo = r"C:\Users\darie\Downloads\PROYECTO_FIFA2026\outputs\figures\FIFA_LOGO.PNG"
 if os.path.exists(ruta_logo):
@@ -83,20 +83,25 @@ menu = st.sidebar.radio(
 st.sidebar.markdown("---")
 st.sidebar.caption("Desarrollado por Dariel Peña Vásquez")
 
-# ==========================================
+# 
 # 5. LÓGICA DE LAS PÁGINAS
-# ==========================================
 
 # ----------------- INICIO -----------------
 if menu == "🏠 Inicio":
-    st.image("https://images.unsplash.com/photo-1518605368461-1e1e100e481c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", use_container_width=True)
-    st.markdown("<h1 style='text-align: center; margin-top: 20px;'>FIFA World Cup 2026</h1>", unsafe_allow_html=True)
+    # Reemplazo de la imagen por iconos nativos para evitar enlaces rotos
+    st.markdown("<div style='text-align: center; font-size: 5rem;'>🏟️ ⚽ 🏆</div>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; margin-top: 10px;'>FIFA World Cup 2026</h1>", unsafe_allow_html=True)
     st.markdown("<h4 style='text-align: center; color: #64748B;'>Predicción mediante Machine Learning y Simulación Monte Carlo</h4>", unsafe_allow_html=True)
     st.write("<br>", unsafe_allow_html=True)
     
-    col1, col2, col3, col4 = st.columns(4)
-    with col1: st.metric("Modelo Ganador", "XGBoost / CatBoost")
+    # Filas divididas de a 2 para evitar que el texto se corte
+    col1, col2 = st.columns(2)
+    with col1: st.metric("Mejores Modelos", "Random Forest / CatBoost")
     with col2: st.metric("Accuracy", "58.25 %")
+    
+    st.write("<br>", unsafe_allow_html=True)
+    
+    col3, col4 = st.columns(2)
     with col3: st.metric("Partidos Históricos", "49,502")
     with col4: st.metric("Simulaciones", "10,000")
 
@@ -105,7 +110,7 @@ elif menu == "📊 Dashboard Ejecutivo":
     st.title("Dashboard Ejecutivo")
     st.markdown("Visualización del rendimiento y probabilidades del torneo.")
     
-    # 1. Imagen principal (Executive Dashboard) - Tamaño completo pero estilizado
+    # 1. Imagen principal (Executive Dashboard)
     ruta_exec = os.path.join("outputs", "figures", "executive_dashboard.png")
     if os.path.exists(ruta_exec):
         st.image(ruta_exec, use_container_width=True)
@@ -113,7 +118,7 @@ elif menu == "📊 Dashboard Ejecutivo":
     else:
         st.info("Esperando gráfico: executive_dashboard.png")
 
-    # 2. Organizar el resto de gráficos en columnas para que se vean más pequeños y elegantes
+    # 2. Organizar el resto de gráficos en columnas
     graficos_col1 = [
         {"archivo": "ranking_top8.png", "titulo": "Top 8 Favoritos"},
         {"archivo": "semifinal_probability.png", "titulo": "Prob. Semifinales"}
