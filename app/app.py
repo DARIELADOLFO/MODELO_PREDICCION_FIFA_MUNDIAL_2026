@@ -3,6 +3,7 @@ import pandas as pd
 import time
 import os
 import random
+import base64
 
 # 
 # 1. CONFIGURACIÓN DE LA PÁGINA
@@ -15,7 +16,7 @@ st.set_page_config(
 )
 
 # 
-# 2. ESTILOS CSS CORPORATIVOS
+# 2. ESTILOS CSS CORPORATIVOS GLOBALES
 # 
 st.markdown("""
     <style>
@@ -40,15 +41,13 @@ st.markdown("""
     }
     .stButton > button:hover { background-color: #B5952F; color: #FFFFFF; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4); }
     .stProgress .st-bo { background-color: #1E3A8A; }
-    
-    /* Estilo para imágenes con bordes redondeados */
     img { border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 """, unsafe_allow_html=True)
 
-# ==========================================
+# 
 # 3. DATOS GLOBALES
-# ==========================================
+# 
 PAISES_MUNDIAL = sorted([
     "Argentina", "Francia", "Brasil", "Inglaterra", "España", "Alemania", 
     "Portugal", "Países Bajos", "Bélgica", "Uruguay", "Colombia", "Suiza", 
@@ -62,10 +61,20 @@ try:
 except ImportError:
     USAR_MOCK = True
 
+# ==========================================
+# 4. FUNCIONES AUXILIARES
+# ==========================================
+def get_base64_image(image_path):
+    """Convierte una imagen local a base64 para inyectarla en CSS."""
+    try:
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    except Exception:
+        return ""
+
 # 
-# 4. NAVEGACIÓN (SIDEBAR)
+# 5. NAVEGACIÓN (SIDEBAR)
 # 
-# Cargar el Logo en la parte superior del Sidebar
 ruta_logo = r"C:\Users\darie\Downloads\PROYECTO_FIFA2026\outputs\figures\FIFA_LOGO.PNG"
 if os.path.exists(ruta_logo):
     st.sidebar.image(ruta_logo, use_container_width=True)
@@ -84,33 +93,75 @@ st.sidebar.markdown("---")
 st.sidebar.caption("Desarrollado por Dariel Peña Vásquez")
 
 # 
-# 5. LÓGICA DE LAS PÁGINAS
+# 6. LÓGICA DE LAS PÁGINAS
+# 
 
 # ----------------- INICIO -----------------
 if menu == "🏠 Inicio":
-    # Reemplazo de la imagen por iconos nativos para evitar enlaces rotos
-    st.markdown("<div style='text-align: center; font-size: 5rem;'>🏟️ ⚽ 🏆</div>", unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center; margin-top: 10px;'>FIFA World Cup 2026</h1>", unsafe_allow_html=True)
-    st.markdown("<h4 style='text-align: center; color: #64748B;'>Predicción mediante Machine Learning y Simulación Monte Carlo</h4>", unsafe_allow_html=True)
-    st.write("<br>", unsafe_allow_html=True)
     
-    # Filas divididas de a 2 para evitar que el texto se corte
-    col1, col2 = st.columns(2)
-    with col1: st.metric("Mejores Modelos", "Random Forest / CatBoost")
-    with col2: st.metric("Accuracy", "58.25 %")
+    # Buscar imagen de fondo (acepta jpg o png)
+    ruta_fondo = os.path.join("outputs", "figures", "fondo_fifa.jpg")
+    if not os.path.exists(ruta_fondo):
+        ruta_fondo = os.path.join("outputs", "figures", "fondo_fifa.png")
+        
+    base64_fondo = get_base64_image(ruta_fondo)
     
-    st.write("<br>", unsafe_allow_html=True)
+    # Crear el bloque HTML/CSS del Hero Banner
+    if base64_fondo:
+        bg_css = f"url(data:image/jpeg;base64,{base64_fondo})"
+    else:
+        bg_css = "#0F172A" # Color de respaldo si no encuentra la imagen
+        
+    hero_html = f"""
+    <div style="
+        background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), {bg_css};
+        background-size: cover;
+        background-position: center;
+        padding: 60px 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        font-family: 'Helvetica Neue', sans-serif;
+        margin-bottom: 30px;
+    ">
+        <div style="font-size: 4rem; margin-bottom: 10px;">🏟️ ⚽ 🏆</div>
+        <h1 style="color: #FFFFFF !important; font-size: 3.5rem; font-weight: 900; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">FIFA World Cup 2026</h1>
+        <h3 style="color: #E2E8F0 !important; font-size: 1.5rem; font-weight: 400; margin-bottom: 40px;">Predicción mediante Machine Learning y Simulación Monte Carlo</h3>
+        
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); flex: 1; min-width: 200px;">
+                <p style="color: #E2E8F0; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Mejores Modelos</p>
+                <p style="color: #D4AF37; margin: 5px 0 0 0; font-size: 1.6rem; font-weight: bold;">Random Forest / CatBoost</p>
+            </div>
+            
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); flex: 1; min-width: 150px;">
+                <p style="color: #E2E8F0; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Accuracy</p>
+                <p style="color: #D4AF37; margin: 5px 0 0 0; font-size: 1.8rem; font-weight: bold;">58.25 %</p>
+            </div>
+            
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); flex: 1; min-width: 150px;">
+                <p style="color: #E2E8F0; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Partidos Históricos</p>
+                <p style="color: #D4AF37; margin: 5px 0 0 0; font-size: 1.8rem; font-weight: bold;">49,502</p>
+            </div>
+            
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); flex: 1; min-width: 150px;">
+                <p style="color: #E2E8F0; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Simulaciones</p>
+                <p style="color: #D4AF37; margin: 5px 0 0 0; font-size: 1.8rem; font-weight: bold;">10,000</p>
+            </div>
+            
+        </div>
+    </div>
+    """
     
-    col3, col4 = st.columns(2)
-    with col3: st.metric("Partidos Históricos", "49,502")
-    with col4: st.metric("Simulaciones", "10,000")
+    st.markdown(hero_html, unsafe_allow_html=True)
+
 
 # ----------------- DASHBOARD EJECUTIVO -----------------
 elif menu == "📊 Dashboard Ejecutivo":
     st.title("Dashboard Ejecutivo")
     st.markdown("Visualización del rendimiento y probabilidades del torneo.")
     
-    # 1. Imagen principal (Executive Dashboard)
     ruta_exec = os.path.join("outputs", "figures", "executive_dashboard.png")
     if os.path.exists(ruta_exec):
         st.image(ruta_exec, use_container_width=True)
@@ -118,7 +169,6 @@ elif menu == "📊 Dashboard Ejecutivo":
     else:
         st.info("Esperando gráfico: executive_dashboard.png")
 
-    # 2. Organizar el resto de gráficos en columnas
     graficos_col1 = [
         {"archivo": "ranking_top8.png", "titulo": "Top 8 Favoritos"},
         {"archivo": "semifinal_probability.png", "titulo": "Prob. Semifinales"}
@@ -139,7 +189,6 @@ elif menu == "📊 Dashboard Ejecutivo":
             else:
                 st.info(f"Falta: {g['archivo']}")
                 
-        # Poner champion_probability al final de la columna 1
         st.subheader("Probabilidad de Campeón")
         ruta_champ = os.path.join("outputs", "figures", "champion_probability.png")
         if os.path.exists(ruta_champ):
