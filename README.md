@@ -41,3 +41,18 @@ La estructura del proyecto está diseñada siguiendo las mejores prácticas de D
 
 ## Filosofía
 Este proyecto mantiene una separación estricta entre los datos originales, los datos procesados, los modelos entrenados y la aplicación final para garantizar la reproducibilidad y escalabilidad a futuro.
+
+
+## Imagenes del Proyecto y las Predicciones 
+<img width="5969" height="3432" alt="executive_dashboard" src="https://github.com/user-attachments/assets/f974c075-7cd8-4663-b901-c87769d49818" />
+
+<img width="2961" height="2369" alt="champion_probability" src="https://github.com/user-attachments/assets/09dc2fd9-052f-483f-b4ac-8057e8daee3b" />
+
+
+<img width="3572" height="2372" alt="stacked_progress" src="https://github.com/user-attachments/assets/887c1c7b-48ef-40d2-8b42-99f9b91cdaac" />
+
+
+<img width="2957" height="2370" alt="final_probability" src="https://github.com/user-attachments/assets/5d981cb9-6f5c-481b-9432-a4b818177bfe" />
+
+
+
