@@ -1,0 +1,18 @@
+# Reporte del Torneo Mundial 2026
+    
+Este reporte consolida las probabilidades reales basadas en la simulación Monte Carlo de miles de escenarios.
+
+## Ranking Principal
+
+| Pais       |   Campeon |   Finalista |   Semifinalista |   Campeon % |   Final % |   Semifinal % |
+|:-----------|----------:|------------:|----------------:|------------:|----------:|--------------:|
+| Francia    |     10925 |       19296 |           31304 |       21.85 |     38.59 |         62.61 |
+| Argentina  |      8220 |       16109 |           30566 |       16.44 |     32.22 |         61.13 |
+| Inglaterra |      7237 |       16498 |           31838 |       14.47 |     33    |         63.68 |
+| España     |      7207 |       12821 |           30940 |       14.41 |     25.64 |         61.88 |
+| Marruecos  |      5704 |       10841 |           18696 |       11.41 |     21.68 |         37.39 |
+| Bélgica    |      3649 |        7042 |           19060 |        7.3  |     14.08 |         38.12 |
+| Suiza      |      3564 |        8318 |           19434 |        7.13 |     16.64 |         38.87 |
+| Noruega    |      3494 |        9075 |           18162 |        6.99 |     18.15 |         36.32 |
+
+*Generado automáticamente.*
