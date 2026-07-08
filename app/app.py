@@ -249,27 +249,27 @@ elif menu == "📄 Reportes":
             st.button(f"Falta archivo: {nombre}", disabled=True)
 
 # ----------------- ACERCA DEL PROYECTO -----------------
-elif menu == "ℹ️ Acerca del Proyecto":
+elif menu == " Acerca del Proyecto":
     st.title("Sobre este Proyecto")
     
     st.markdown("""
-    ### 🎯 Objetivo Principal
+    ###  Objetivo Principal
     Desarrollar un sistema avanzado de **Machine Learning** y análisis estadístico capaz de evaluar patrones históricos para proyectar probabilidades, predecir enfrentamientos directos y simular el desarrollo completo de la **Copa Mundial de la FIFA 2026**.
     
     ---
     
-    ### 📊 Fuentes de Datos
+    ###  Fuentes de Datos
     * **Historial Internacional:** Procesamiento de más de **49,500 partidos oficiales y amistosos** (dataset histórico desde 1872), filtrando y priorizando los datos contemporáneos para evaluar el "Power Ranking" actual de cada selección.
     * **Estructura del Torneo 2026:** Integración de la nueva fase de grupos de 48 equipos y el cuadro eliminatorio oficial (Ronda de 32 hasta la Final).
     
-    ### 🧠 Metodología y Arquitectura
+    ###  Metodología y Arquitectura
     1. **Feature Engineering:** Creación de variables predictivas clave como la *Fuerza Ofensiva/Defensiva*, historial *Head-to-Head (H2H)*, diferencia de goles y rendimiento en los últimos encuentros.
     2. **Motor Predictivo:** Entrenamiento y evaluación de múltiples algoritmos para clasificación multiclase. Se evaluaron Random Forest, XGBoost y **CatBoost**, seleccionando este último por su superioridad al manejar variables categóricas complejas (como los nombres de los países) sin necesidad de transformaciones pesadas.
     3. **Simulación Monte Carlo:** Ejecución de **10,000 iteraciones** virtuales del torneo completo. Este motor toma las probabilidades matemáticas de cada choque y simula la aleatoriedad del deporte para calcular con exactitud qué porcentaje de veces un país logra alcanzar cada fase (Cuartos, Semis, Final).
     
     ---
     
-    ### 💻 Stack Tecnológico
+    ###  Stack Tecnológico
     * **Lenguaje Base:** Python 3
     * **Manipulación de Datos:** Pandas, NumPy
     * **Modelado y Predicción:** Scikit-Learn, CatBoost
