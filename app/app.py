@@ -5,9 +5,7 @@ import os
 import random
 import base64
 
-# ==========================================
 # 1. CONFIGURACIÓN DE LA PÁGINA
-# ==========================================
 st.set_page_config(
     page_title="FIFA World Cup 2026 Predictor",
     page_icon="🏆",
@@ -15,9 +13,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ==========================================
+
 # 2. ESTILOS CSS CORPORATIVOS GLOBALES
-# ==========================================
+
 st.markdown("""
     <style>
     .stApp { background-color: #F8FAFC; }
@@ -45,9 +43,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ==========================================
 # 3. DATOS GLOBALES
-# ==========================================
 PAISES_MUNDIAL = sorted([
     "Argentina", "Francia", "Brasil", "Inglaterra", "España", "Alemania", 
     "Portugal", "Países Bajos", "Bélgica", "Uruguay", "Colombia", "Suiza", 
@@ -71,9 +67,7 @@ def get_base64_image(image_path):
     except Exception:
         return ""
 
-# ==========================================
 # 5. NAVEGACIÓN (SIDEBAR)
-# ==========================================
 ruta_logo = r"C:\Users\darie\Downloads\PROYECTO_FIFA2026\outputs\figures\FIFA_LOGO.PNG"
 if os.path.exists(ruta_logo):
     st.sidebar.image(ruta_logo, use_container_width=True)
@@ -91,9 +85,7 @@ menu = st.sidebar.radio(
 st.sidebar.markdown("---")
 st.sidebar.caption("Desarrollado por Dariel Peña Vásquez")
 
-# ==========================================
 # 6. LÓGICA DE LAS PÁGINAS
-# ==========================================
 
 # ----------------- INICIO -----------------
 if menu == "🏠 Inicio":
@@ -259,7 +251,37 @@ elif menu == "📄 Reportes":
 # ----------------- ACERCA DEL PROYECTO -----------------
 elif menu == "ℹ️ Acerca del Proyecto":
     st.title("Sobre este Proyecto")
+    
     st.markdown("""
-    **Objetivo:** Desarrollar un modelo de Machine Learning capaz de evaluar estadísticas para proyectar probabilidades en la Copa Mundial de la FIFA 2026.
-    **Tecnologías:** Python, Pandas, Scikit-Learn, CatBoost, Streamlit.
-    """)
+    ### 🎯 Objetivo Principal
+    Desarrollar un sistema avanzado de **Machine Learning** y análisis estadístico capaz de evaluar patrones históricos para proyectar probabilidades, predecir enfrentamientos directos y simular el desarrollo completo de la **Copa Mundial de la FIFA 2026**.
+    
+    ---
+    
+    ### 📊 Fuentes de Datos
+    * **Historial Internacional:** Procesamiento de más de **49,500 partidos oficiales y amistosos** (dataset histórico desde 1872), filtrando y priorizando los datos contemporáneos para evaluar el "Power Ranking" actual de cada selección.
+    * **Estructura del Torneo 2026:** Integración de la nueva fase de grupos de 48 equipos y el cuadro eliminatorio oficial (Ronda de 32 hasta la Final).
+    
+    ### 🧠 Metodología y Arquitectura
+    1. **Feature Engineering:** Creación de variables predictivas clave como la *Fuerza Ofensiva/Defensiva*, historial *Head-to-Head (H2H)*, diferencia de goles y rendimiento en los últimos encuentros.
+    2. **Motor Predictivo:** Entrenamiento y evaluación de múltiples algoritmos para clasificación multiclase. Se evaluaron Random Forest, XGBoost y **CatBoost**, seleccionando este último por su superioridad al manejar variables categóricas complejas (como los nombres de los países) sin necesidad de transformaciones pesadas.
+    3. **Simulación Monte Carlo:** Ejecución de **10,000 iteraciones** virtuales del torneo completo. Este motor toma las probabilidades matemáticas de cada choque y simula la aleatoriedad del deporte para calcular con exactitud qué porcentaje de veces un país logra alcanzar cada fase (Cuartos, Semis, Final).
+    
+    ---
+    
+    ### 💻 Stack Tecnológico
+    * **Lenguaje Base:** Python 3
+    * **Manipulación de Datos:** Pandas, NumPy
+    * **Modelado y Predicción:** Scikit-Learn, CatBoost
+    * **Visualización de Datos:** Plotly, Matplotlib
+    * **Despliegue Frontend:** Streamlit
+    * **Asistentes de IA:** Codex IA, Google Antigravity, ChatGPT y Gemini. Para Documentacion correcta del proyecto y ayuda con la aplicacion web 
+
+    
+    ---
+    
+    <div style="text-align: center; margin-top: 50px; padding: 20px; background-color: #F8FAFC; border-radius: 10px; border: 1px solid #E2E8F0;">
+        <p style="margin: 0; color: #1E3A8A; font-size: 1.1rem;">Diseñado y desarrollado por</p>
+        <p style="margin: 5px 0 0 0; color: #D4AF37; font-size: 1.5rem; font-weight: bold;">Dariel Peña Vásquez</p>
+    </div>
+    """, unsafe_allow_html=True)
